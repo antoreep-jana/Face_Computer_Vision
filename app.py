@@ -49,7 +49,3 @@ if uploaded_file is not None:
 
 		st.write("Predicted Mask")
 
-
-
-else:
-	st.write("Please upload a valid file")
