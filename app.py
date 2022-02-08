@@ -13,41 +13,36 @@ st.sidebar.markdown("""Perform various tasks related face using this tool""")
 option = st.selectbox("Choose the operation to perform", ['Age Prediction', 'Face Deblur', 'Face Recognition', 'Sentiment Classification', "Mask Prediction"])
 
 
-file = st.file_uploader("Upload an image from local disk", type = ['jpg', 'jpeg', 'png'])
+uploaded_file = st.file_uploader("Upload an image from local disk", type = ['jpg', 'jpeg', 'png'])
 
-    if file is not None:
+	if uploaded_file is not None:
 
-        image = Image.open(file)
+		image = Image.open(uploaded_file)
 
-        #st.image(image, caption='Uploaded Image.', use_column_width=True)
-        st.write("")
-        #st.write("Classifying...")
+		st.write("")
+		
+		if option == 'Age Prediction':
 
-        #label = 'Label1'
-        #st.write(f"Classified as {label}")
+			age = '10'
+			st.write(f"Predicted age : {age}")
 
-        if option == 'Age Prediction':
+		elif option == 'Face Deblur':
 
-            age = '10'
-            st.write(f"Predicted age : {age}")
+			st.image(image, caption = 'Deblurred Image', use_column_width = True)
+			st.write("Face Deblurred")
 
-        elif option == 'Face Deblur':
+		elif option == "Face Recognition":
 
-            st.image(image, caption = 'Deblurred Image', use_column_width = True)
-            st.write("Face Deblurred")
+			st.write("Recognizing face")
 
-        elif option == "Face Recognition":
+		elif option == 'Sentiment Classification':
 
-            st.write("Recognizing face")
+			sentiment = 'happy'
+			st.write(f"Sentiment of the face : {sentiment}")
 
-        elif option == 'Sentiment Classification':
+		elif option == "Mask Prediction":
 
-            sentiment = 'happy'
-            st.write(f"Sentiment of the face : {sentiment}")
-
-        elif option == "Mask Prediction":
-
-            st.write("Predicted Mask")
+			st.write("Predicted Mask")
 
 
 
