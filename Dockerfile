@@ -1,5 +1,11 @@
 FROM python:3.8
-COPY requirements.txt ./requirements.txt
-RUN pip3 install -r requirements.txt 
-COPY . .
-CMD streamlit run app.py
+COPY . /app
+WORKDIR /app
+
+RUN pip install --upgrade pip
+RUN pip --no-cache-dir install -r requirements.txt
+
+EXPOSE 8501
+
+ENTRYPOINT ['streamlit', 'run', '--server.maxUploadSize=5']
+CMD ['app.py']
