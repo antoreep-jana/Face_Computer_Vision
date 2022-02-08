@@ -15,7 +15,7 @@ uploaded_file = st.file_uploader("Upload an image from local disk", type = ['jpg
 
 
 
-option = st.selectbox("Choose the operation to perform", ['Age Prediction', 'Face Deblur', 'Face Recognition', 'Sentiment Classification', "Mask Prediction"])
+option = st.selectbox("Choose the operation to perform", ['Age Prediction', 'Face Deblur', 'Face Recognition', 'Sentiment Classification', "Mask Prediction", "Face Verification"])
 
 
 
