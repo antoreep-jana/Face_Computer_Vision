@@ -10,10 +10,14 @@ st.sidebar.markdown("""Perform various tasks related face using this tool""")
 
 #st.subheader("Choose an option")
 
+
+uploaded_file = st.file_uploader("Upload an image from local disk", type = ['jpg', 'jpeg', 'png'])
+
+
+
 option = st.selectbox("Choose the operation to perform", ['Age Prediction', 'Face Deblur', 'Face Recognition', 'Sentiment Classification', "Mask Prediction"])
 
 
-uploaded_file = st.file_uploader("Upload an image from local disk", type = ['jpg', 'jpeg', 'png'])
 
 
 if uploaded_file is not None:
@@ -47,3 +51,5 @@ if uploaded_file is not None:
 
 
 
+else:
+	st.write("Please upload a valid file")
