@@ -28,7 +28,13 @@ if uploaded_file is not None:
 		
 	if option == 'Age Prediction':
 
-		age = '10'
+		#age = '10'
+		from age_prediction import AgePredictor
+		
+		predictor = AgePredictor(image)
+
+		age = predictor.predict_age()
+
 		st.write(f"Predicted age : {age}")
 
 	elif option == 'Face Deblur':

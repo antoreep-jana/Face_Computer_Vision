@@ -1,3 +1,5 @@
+from deepface import DeepFace
+
 class AgePredictor:
 
 
@@ -6,4 +8,6 @@ class AgePredictor:
 		self.image = img 
 
 	def predict_age(self):
-		pass
+		return DeepFace.analyze( img_path = self.image, actions = ['age'])['age']
+
+		
