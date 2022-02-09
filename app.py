@@ -35,6 +35,8 @@ if uploaded_file is not None:
 		#age = '10'
 		from age_prediction import AgePredictor
 		
+
+		print("Image Path -> ", img_path)
 		predictor = AgePredictor(img_path)
 		#print(predictor)
 
