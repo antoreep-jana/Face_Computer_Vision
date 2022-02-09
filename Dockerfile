@@ -4,8 +4,8 @@ WORKDIR /app
 
 RUN pip install --upgrade pip
 RUN pip --no-cache-dir install -r requirements.txt
-RUN apt-get update
-RUN apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt-get update && apt-get install -y python3-opencv
+RUN pip install opencv-python
 
 EXPOSE 8501
 
