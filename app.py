@@ -23,7 +23,11 @@ option = st.selectbox("Choose the operation to perform", ['Age Prediction', 'Fac
 if uploaded_file is not None:
 
 	image = Image.open(uploaded_file)
+	#print(uploaded_file.name)
+	#print(str(uploaded_file.name))
 
+	image.save("tmp/" + str(uploaded_file.name))
+	img_path = "tmp/" + str(uploaded_file.name)
 	st.write("")
 		
 	if option == 'Age Prediction':
@@ -31,9 +35,15 @@ if uploaded_file is not None:
 		#age = '10'
 		from age_prediction import AgePredictor
 		
-		predictor = AgePredictor(image)
+		predictor = AgePredictor(img_path)
+		#print(predictor)
 
 		age = predictor.predict_age()
+		#age = 10
+		#print(predictor.predict_age())
+		#from deepface import DeepFace
+		#print(uploaded_file)
+		#age = DeepFace.analyze(img_path = img_path, actions = ['age'])['age']
 
 		st.write(f"Predicted age : {age}")
 
