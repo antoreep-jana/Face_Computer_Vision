@@ -73,8 +73,11 @@ if uploaded_file is not None:
 
 	elif option == 'Sentiment Classification':
 
-		sentiment = 'happy'
-		st.write(f"Sentiment of the face : {sentiment}")
+		#sentiment = 'happy'
+		from sentiment_classification import SentimentClassifier
+		sentiment = SentimentClassifier(img_path)
+		output = sentiment.get_sentiment()
+		st.write(f"Sentiment of the face : {output}")
 
 	elif option == "Mask Prediction":
 
