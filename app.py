@@ -35,6 +35,9 @@ if uploaded_file is not None:
 		#age = '10'
 		from age_prediction import AgePredictor
 		
+		# https://github.com/serengil/deepface_models/releases/download/v1.0/age_model_weights.h5
+
+		# to /home/appuser/.deepface/weights/age_model_weights.h5
 
 		#print("Image Path -> ", img_path)
 		predictor = AgePredictor(img_path)
