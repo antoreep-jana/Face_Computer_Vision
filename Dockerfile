@@ -1,6 +1,6 @@
 FROM python:3.8
-COPY . /app
-WORKDIR /app
+COPY . /home
+WORKDIR /home
 
 RUN pip install --upgrade pip
 RUN pip --no-cache-dir install -r requirements.txt
@@ -9,9 +9,9 @@ RUN pip --no-cache-dir install -r requirements.txt
 #RUN sudo apt install libgl1-mesa-glx
 RUN apt-get install -y wget 
 RUN wget https://github.com/serengil/deepface_models/releases/download/v1.0/age_model_weights.h5
-RUN mkdir /app/home/appuser/.deepface
-RUN mkdir /app/home/appuser/.deepface/weights
-COPY age_model_weights.h5 /app/home/appuser/.deepface/weights/age_model_weights.h5
+RUN mkdir home/appuser/.deepface
+RUN mkdir home/appuser/.deepface/weights
+COPY age_model_weights.h5 home/appuser/.deepface/weights/age_model_weights.h5
 RUN ECHO "Installation Completed"
 
 #RUN apt-get install ffmpeg libsm6 libxext6  -y
