@@ -15,7 +15,7 @@ uploaded_file = st.file_uploader("Upload an image from local disk", type = ['jpg
 
 
 
-option = st.selectbox("Choose the operation to perform", ['Age Prediction', 'Face Deblur', 'Face Recognition', 'Sentiment Classification', "Mask Prediction", "Face Verification"])
+option = st.selectbox("Choose the operation to perform", ['Age Prediction', 'Face Deblur', 'Face Detection', 'Sentiment Classification', "Mask Prediction", "Face Verification"])
 
 
 
@@ -36,27 +36,37 @@ if uploaded_file is not None:
 		from age_prediction import AgePredictor
 		
 
-		print("Image Path -> ", img_path)
+		#print("Image Path -> ", img_path)
 		predictor = AgePredictor(img_path)
 		#print(predictor)
 
-		age = predictor.predict_age()
+		with st.spinner("Predicting age..."):
+			age = predictor.predict_age()
 		#age = 10
 		#print(predictor.predict_age())
 		#from deepface import DeepFace
 		#print(uploaded_file)
 		#age = DeepFace.analyze(img_path = img_path, actions = ['age'])['age']
 
-		st.write(f"Predicted age : {age}")
+			st.write(f"Predicted age : {age}")
 
 	elif option == 'Face Deblur':
 
 		st.image(image, caption = 'Deblurred Image', use_column_width = True)
 		st.write("Face Deblurred")
 
-	elif option == "Face Recognition":
+	elif option == "Face Detection":
 
-		st.write("Recognizing face")
+		with st.spinner("Detecting Faces...."):
+			from face_detection import FaceDetector 
+
+			face = FaceDetector(img_path)
+			detection = face.detect_face()
+
+
+			st.image(image, width = 250, caption = 'Input Image', use_column_width = False)
+			st.image(detection, width = 250, caption = 'Detection', use_column_width = False)
+
 
 	elif option == 'Sentiment Classification':
 
