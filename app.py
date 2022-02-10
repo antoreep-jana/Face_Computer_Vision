@@ -80,3 +80,24 @@ if uploaded_file is not None:
 
 		st.write("Predicted Mask")
 
+	elif option == "Face Verification":
+
+		uploaded_file2 = st.file_uploader("Upload another image from local disk for verification", type = ['jpg', 'jpeg', 'png'])
+
+		if uploaded_file2 is not None:
+
+			image2 = Image.open(uploaded_file2)
+
+			image2.save("tmp/" + str(uploaded_file2.name))
+			img_path2 = "tmp/" + str(uploaded_file2.name)
+
+			with st.spinner("Verifying input images..."):
+				from face_verification import FaceVerifier
+
+				verifier = FaceVerifier(img_path, img_path2)
+
+				result = verifier.verify()
+
+				st.write(f"Output of verification : {result}")
+
+
