@@ -80,7 +80,7 @@ if uploaded_file is not None:
 		st.write(f"Sentiment of the face : {output}")
 
 	elif option == "Mask Prediction":
-
+		
 		st.write("Predicted Mask")
 
 	elif option == "Face Verification":
