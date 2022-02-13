@@ -80,8 +80,13 @@ if uploaded_file is not None:
 		st.write(f"Sentiment of the face : {output}")
 
 	elif option == "Mask Prediction":
-		
-		st.write("Predicted Mask")
+		from mask_prediction import MaskPredictor 
+
+		predictor = MaskPredictor(img_path)
+		output = predictor.predict_mask()
+
+		st.image(output, width = 650, caption = 'Predicted Detections', use_column_width = False)
+		#st.write("Predicted Mask of the face")
 
 	elif option == "Face Verification":
 
