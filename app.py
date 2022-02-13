@@ -55,8 +55,15 @@ if uploaded_file is not None:
 
 	elif option == 'Face Deblur':
 
-		st.image(image, caption = 'Deblurred Image', use_column_width = True)
-		st.write("Face Deblurred")
+		from face_deblur import FaceUnblur 
+
+		unblur = FaceUnblur(img_path)
+		output = unblur.unblur_face()
+
+		st.write("Predicting using a simple model....(Limited to face crops)")
+		st.image(image, width = 450, clamp = True, channels = "RGB", caption = "Original Image", use_column_width = False)
+		st.image(output, width = 450,  clamp = True, channels = "RGB", caption = 'Deblurred Image', use_column_width = False)
+		#st.write("Face Deblurred")
 
 	elif option == "Face Detection":
 
